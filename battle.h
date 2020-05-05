@@ -1,5 +1,6 @@
 #ifndef __BATTLE__H__
 #define __BATTLE__H__
+#include <vector>
 #include "static_structure.h"
 #include "structure.h"
 

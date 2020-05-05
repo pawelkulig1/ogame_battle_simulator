@@ -46,7 +46,7 @@ bool Structure::attack(Structure &another)
         return will_shot_again;
     }    
     
-    another.m_hull = std::max_element(another.m_hull - attack, 0);
+    another.m_hull = std::max(another.m_hull - attack, 0);
 
     if (another.m_hull < threshold)
     {
