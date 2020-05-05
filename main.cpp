@@ -1,13 +1,6 @@
 
 #include <map>
 
-enum ID {
-	SMALL_CARGO = 0,
-	LARGE_CARGO = 1,
-	
-};
-
-
 int main() {
     std::map<int, int> rr;
     r[8]  = 5;

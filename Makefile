@@ -1,2 +1,2 @@
 all:
-	$(CXX) main.cpp structure.cpp -o main.o
+	$(CXX) main.cpp structure.cpp battle.cpp -o main.o
