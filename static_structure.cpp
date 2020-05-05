@@ -1,5 +1,17 @@
 #include "static_structure.h"
 
+StaticStructure::StaticStructure()
+{
+}
+
+StaticStructure::StaticStructure(std::map<int, int> rapid_fire, StaticStructure::default_type attack, StaticStructure::default_type hull, StaticStructure::default_type shield): 
+    m_rapid_fire(rapid_fire),
+    m_attack(attack),
+    m_hull(hull),
+    m_shield(shield)
+{
+}
+
 StaticStructure::default_type StaticStructure::get_attack() const
 {
     return m_attack;

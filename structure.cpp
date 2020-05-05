@@ -55,6 +55,7 @@ bool Structure::attack(Structure &another)
             m_exploded = true;
         }
     }
+    return will_shot_again;
 }
 
 bool Structure::is_exploding() const
