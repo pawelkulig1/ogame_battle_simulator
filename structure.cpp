@@ -25,7 +25,7 @@ bool Structure::attack(Structure &another)
     bool will_shot_again = false;
     int rapid_fire = get_rapid_fire(another);
 
-    if ((rapid_fire - 1) < ((rand() % rapid_fire) + 1))
+    if ((rapid_fire - 1) < ((rand() % rapid_fire) + 1))//rapid_fire> ((rand() % rapid_fire) + 1) ?
     {
         will_shot_again = true;
     }
@@ -44,13 +44,13 @@ bool Structure::attack(Structure &another)
     {
         another.m_shield -= attack;
         return will_shot_again;
-    }    
-    
+    }
+
     another.m_hull = std::max(another.m_hull - attack, 0);
 
     if (another.m_hull < threshold)
     {
-        if ((rand() % another_default_hull) > another.m_hull)
+        if ((rand() % another_default_hull) > another.m_hull) // +1?
         {
             m_exploded = true;
         }
