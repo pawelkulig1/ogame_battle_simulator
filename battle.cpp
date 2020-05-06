@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include "battle.h"
 #include "structure.h"
+#include <iostream>
 
 
 Battle::Battle()
@@ -114,7 +115,7 @@ void Battle::simulate( int iterations)
       }
     }
 
-    cout<<"\n\n Attacker wins = "<<ATT_WIN;
-    cout<<"\n Defender wins = "<<DEF_WIN;
-    cout<<"\n Draws = "<<DRAW;
+    std::cout<<"\n\n Attacker wins = "<<ATT_WIN;
+    std::cout<<"\n Defender wins = "<<DEF_WIN;
+    std::cout<<"\n Draws = "<<DRAW;
 }

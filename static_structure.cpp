@@ -4,7 +4,7 @@ StaticStructure::StaticStructure()
 {
 }
 
-StaticStructure::StaticStructure(std::map<int, int> rapid_fire, StaticStructure::default_type attack, StaticStructure::default_type hull, StaticStructure::default_type shield): 
+StaticStructure::StaticStructure(std::map<int, int> rapid_fire, StaticStructure::default_type attack, StaticStructure::default_type hull, StaticStructure::default_type shield):
     m_rapid_fire(rapid_fire),
     m_attack(attack),
     m_hull(hull),
@@ -35,7 +35,7 @@ int StaticStructure::get_id() const
 int StaticStructure::get_rapid_fire(int id) const
 {
     int rapid = 0;
-    std::map<const int, int>::const_iterator rapid_pos = m_rapid_fire.find(id);
+    std::map< int, int>::const_iterator rapid_pos = m_rapid_fire.find(id);
     if (rapid_pos != m_rapid_fire.end())
     {
         rapid = rapid_pos->second;

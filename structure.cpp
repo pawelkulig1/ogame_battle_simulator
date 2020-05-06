@@ -25,7 +25,7 @@ bool Structure::attack(Structure &another)
     bool will_shot_again = false;
     int rapid_fire = get_rapid_fire(another);
 
-    if (rapid_fire> ((rand() % rapid_fire + 1))
+    if (rapid_fire> (rand() % rapid_fire + 1))
     {
         will_shot_again = true;
     }
