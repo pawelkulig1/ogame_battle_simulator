@@ -11,14 +11,14 @@ class Battle
     const int MAX_ROUNDS = 6;
 
 public:
-    enum Player 
+    enum Player
     {
         DEFENDER = 0,
         ATTACKER = 1
     };
-    
+
     Battle();
     void add_structure(Battle::Player player, Structure structure, int amount);
-    void simulate();
+    void simulate( int iterations);
 };
 #endif
