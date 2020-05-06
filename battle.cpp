@@ -10,13 +10,13 @@ Battle::Battle()
 
 void Battle::add_structure(Battle::Player player, Structure structure, int amount)
 {
-    for (int i=0; i<amount; ++i)
+    for (int i=0; i<amount; ++i) //would it be more efficient to do checking player before for loop?
     {
-        if (player) 
+        if (player)
         {
             attacking.push_back(structure);
         }
-        else 
+        else
         {
             defending.push_back(structure);
         }
@@ -27,7 +27,7 @@ void Battle::simulate()
 {
     for (int i = 0; i < MAX_ROUNDS; i++)
     {
-        if (attacking.size() * defending.size())
+        if (!(attacking.size() * defending.size()))
         {
             break;
         }
