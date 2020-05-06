@@ -32,24 +32,27 @@ void Battle::simulate( int iterations)
     std::vector<Structure> left_attacking;
     std::vector<Structure> left_defending;
 
-    int ATT_WIN = 0;
-    int DEF_WIN = 0;
-    int DRAW = 0;
-
-    for (Structure s : attacking )
-    {
-        temp_attacking.push_back(s);
-    }
-
-    for (Structure s : defending )
-    {
-        temp_defending.push_back(s);
-    }
+    int att_win = 0;
+    int def_win = 0;
+    int draw = 0;
 
     for (int j = 0; j < iterations; j++)
     {
-      for (int i = 0; i < MAX_ROUNDS; i++)
-      {
+        temp_attacking.clear();
+        temp_defending.clear();
+
+        for (Structure s : attacking )
+        {
+            temp_attacking.push_back(s);
+        }
+
+        for (Structure s : defending )
+        {
+            temp_defending.push_back(s);
+        }
+
+        for (int i = 0; i < MAX_ROUNDS; i++)
+        {
           if (!(temp_attacking.size() * temp_defending.size()))
           {
               break;
@@ -91,21 +94,21 @@ void Battle::simulate( int iterations)
       }
       if (!temp_attacking.size() )
       {
-          ATT_WIN++;
+          att_win++;
           for (Structure s : attacking ){
               left_attacking.push_back(s);
           }
       }
       else if (!temp_defending.size() )
       {
-          DEF_WIN++;
+          def_win++;
           for (Structure s : defending ){
               left_defending.push_back(s);
           }
       }
       else
       {
-        DRAW++;
+        draw++;
         for (Structure s : attacking ){
             left_attacking.push_back(s);
         }
@@ -115,7 +118,7 @@ void Battle::simulate( int iterations)
       }
     }
 
-    std::cout<<"\n\n Attacker wins = "<<ATT_WIN;
-    std::cout<<"\n Defender wins = "<<DEF_WIN;
-    std::cout<<"\n Draws = "<<DRAW;
+    std::cout<<"\n\n Attacker wins = "<<att_win;
+    std::cout<<"\n Defender wins = "<<def_win;
+    std::cout<<"\n draws = "<<draw;
 }
