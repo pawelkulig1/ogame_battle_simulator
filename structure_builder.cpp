@@ -171,6 +171,11 @@ void StructureBuilder::build_structures()
   	//LARGE_DOME_SHIELD = 24,
     static_structure_arr[ID::LARGE_DOME_SHIELD] = StaticStructure(rapid_fire, 1, 1160, 10000);
     rapid_fire.erase(rapid_fire.begin(), rapid_fire.end());
+
+    for (int i=0;i<ID::SIZE;i++)
+    {
+	static_structure_arr.at(i).set_id(i);
+    }
 }
 
 Structure StructureBuilder::get_structure(ID id)

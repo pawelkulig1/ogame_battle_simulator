@@ -27,6 +27,11 @@ StaticStructure::default_type StaticStructure::get_shield() const
     return m_shield;
 }
 
+void StaticStructure::set_id(int id)
+{
+    m_id = id;
+}
+
 int StaticStructure::get_id() const
 {
     return m_id;

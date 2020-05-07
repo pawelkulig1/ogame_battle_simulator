@@ -26,8 +26,6 @@ void Battle::add_structure(Battle::Player player, Structure structure, int amoun
 
 void Battle::simulate( int iterations)
 {
-    std::vector<Structure> temp_attacking;
-    std::vector<Structure> temp_defending;
 
     std::vector<Structure> left_attacking;
     std::vector<Structure> left_defending;
@@ -38,18 +36,8 @@ void Battle::simulate( int iterations)
 
     for (int j = 0; j < iterations; j++)
     {
-        temp_attacking.clear();
-        temp_defending.clear();
-
-        for (Structure s : attacking )
-        {
-            temp_attacking.push_back(s);
-        }
-
-        for (Structure s : defending )
-        {
-            temp_defending.push_back(s);
-        }
+    	std::vector<Structure> temp_attacking(attacking.begin(), attacking.end());
+    	std::vector<Structure> temp_defending(defending.begin(), defending.end());
 
         for (int i = 0; i < MAX_ROUNDS; i++)
         {
@@ -78,7 +66,7 @@ void Battle::simulate( int iterations)
 
           for (int i = 0; i < temp_attacking.size(); i++)
           {
-              if (temp_attacking.at(i).is_exploding())
+              if (temp_attacking.at(i).prepare_for_new_round())
               {
                   temp_attacking.erase(temp_attacking.begin() + i);
               }
@@ -86,7 +74,7 @@ void Battle::simulate( int iterations)
 
           for (int i = 0; i < temp_defending.size(); i++)
           {
-              if (temp_defending.at(i).is_exploding())
+              if (temp_defending.at(i).prepare_for_new_round())
               {
                   temp_defending.erase(temp_defending.begin() + i);
               }
@@ -118,7 +106,7 @@ void Battle::simulate( int iterations)
       }
     }
 
-    std::cout<<"\n\n Attacker wins = "<<att_win;
-    std::cout<<"\n Defender wins = "<<def_win;
-    std::cout<<"\n draws = "<<draw;
+    std::cout << "\n\nAttacker wins = " << att_win;
+    std::cout << "\nDefender wins = " << def_win;
+    std::cout << "\ndraws = " << draw << "\n";
 }

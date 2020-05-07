@@ -10,11 +10,12 @@ class StaticStructure {
 	default_type m_shield;
 public:
     StaticStructure();
-	StaticStructure(std::map<int, int> rapid_fire, default_type attack, default_type hull, default_type shield);
+    StaticStructure(std::map<int, int> rapid_fire, default_type attack, default_type hull, default_type shield);
+    int get_id() const;
+    void set_id(int id);
     default_type get_attack() const;
     default_type get_hull() const;
     default_type get_shield() const;
-    int get_id() const;
     int get_rapid_fire(int id) const;
 };
 

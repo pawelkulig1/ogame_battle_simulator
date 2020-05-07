@@ -15,5 +15,6 @@ class Structure
 public:
 	Structure(StaticStructure *ststructure);
 	bool attack(Structure &another);
-	bool is_exploding() const;
+	bool check_if_explodes();
+	bool prepare_for_new_round();
 };
