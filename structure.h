@@ -17,4 +17,6 @@ public:
 	bool attack(Structure &another);
 	bool check_if_explodes();
 	bool prepare_for_new_round();
+	int get_id() const;
+	bool is_exploded() const;
 };

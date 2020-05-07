@@ -1,7 +1,8 @@
 FILES=  static_structure.o \
 		structure.o \
 		battle.o \
-		structure_builder.o
+		structure_builder.o \
+		random_number_generator.o
 
 CXXFLAGS=--std=c++11 -g
 

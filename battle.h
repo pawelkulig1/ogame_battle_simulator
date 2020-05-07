@@ -8,6 +8,10 @@ class Battle
 {
     std::vector<Structure> attacking;
     std::vector<Structure> defending;
+
+    int att_count_left[25];
+    int def_count_left[25];
+
     const int MAX_ROUNDS = 6;
 
 public:
@@ -20,5 +24,6 @@ public:
     Battle();
     void add_structure(Battle::Player player, Structure structure, int amount);
     void simulate( int iterations);
+    void count(std::vector<Structure> fleet, int fleet_count[25]);
 };
 #endif
