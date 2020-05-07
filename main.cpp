@@ -6,7 +6,7 @@ int main() {
 	StructureBuilder sb = StructureBuilder();
 
 	battle.add_structure(Battle::ATTACKER, sb.get_structure(ID::SMALL_CARGO), 10);
-	battle.add_structure(Battle::DEFENDER, sb.get_structure(ID::SMALL_CARGO), 10);
+	battle.add_structure(Battle::DEFENDER, sb.get_structure(ID::LARGE_CARGO), 5);
 
 	battle.simulate(100);
     return 0;

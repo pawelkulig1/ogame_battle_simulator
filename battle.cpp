@@ -7,6 +7,10 @@
 
 Battle::Battle()
 {
+    for (int i = 0; i <25; i++){
+        att_count_left[i] = 0;
+        def_count_left[i] = 0;
+    }
 }
 
 void Battle::add_structure(Battle::Player player, Structure structure, int amount)
@@ -21,6 +25,14 @@ void Battle::add_structure(Battle::Player player, Structure structure, int amoun
         {
             defending.push_back(structure);
         }
+    }
+}
+
+void Battle::count(std::vector<Structure> fleet, int* fleet_count)
+{
+    for (Structure s: fleet)
+    {
+        fleet_count[s.get_id()]++;
     }
 }
 
@@ -122,7 +134,49 @@ void Battle::simulate( int iterations)
       }
     }
 
-    std::cout<<"\n\n Attacker wins = "<<att_win;
+    std::cout<<"\n Attacker wins = "<<att_win;
     std::cout<<"\n Defender wins = "<<def_win;
     std::cout<<"\n draws = "<<draw;
+    std::cout<<"\n\n";
+
+    int attacker[25];
+    int defender[25];
+
+    for( int i = 0; i < 25; i++)
+    {
+        attacker[i] = 0;
+        defender[i] = 0;
+    }
+
+    count(attacking, attacker);
+    count(defending, defender);
+    std::cout<<" Initial count:\n Structure | Attacker | Defender\n";
+
+    for( int i = 0; i < 25; i++ )
+    {
+        if (attacker[i]||defender[i])
+        {
+            std::cout<<"      "<<i<<"   |   "<<attacker[i]<<"   |   "<<defender[i]<<'\n';
+        }
+    }
+
+    for( int i = 0; i < 25; i++)
+    {
+        attacker[i] = 0;
+        defender[i] = 0;
+    }
+
+    count(left_attacking, attacker);
+    count(left_defending, defender);
+
+    std::cout<<"\n Afterwards count:\n Structure | Attacker | Defender\n";
+
+    for( int i = 0; i < 25; i++ )
+    {
+        if (attacker[i]||defender[i])
+        {
+            std::cout<<"      "<<i<<"   |   "<<double(attacker[i])/iterations<<"   |   "<<double(defender[i])/iterations<<'\n';
+        }
+    }
+    std::cout<<'\n';
 }

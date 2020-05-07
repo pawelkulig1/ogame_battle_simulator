@@ -7,6 +7,7 @@ Structure::Structure(StaticStructure *ststructure)
     m_ststructure_ptr = ststructure;
     m_hull = ststructure->get_hull();
     m_shield = ststructure->get_shield();
+    id = ststructure->get_id();
 
     m_exploded = false;
 }
@@ -61,4 +62,9 @@ bool Structure::attack(Structure &another)
 bool Structure::is_exploding() const
 {
     return m_exploded;
+}
+
+int Structure::get_id() const
+{
+    return id;
 }
