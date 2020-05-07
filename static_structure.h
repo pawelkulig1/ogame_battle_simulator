@@ -8,12 +8,16 @@ class StaticStructure {
 	default_type m_attack;
 	default_type m_hull;
 	default_type m_shield;
+	default_type m_cargo;
+	default_type m_fuel_cons;
 public:
     StaticStructure();
-	StaticStructure(std::map<int, int> rapid_fire, default_type attack, default_type hull, default_type shield);
+	StaticStructure(std::map<int, int> rapid_fire, default_type attack, default_type hull, default_type shield, default_type cargo, default_type fuel_cons);
     default_type get_attack() const;
     default_type get_hull() const;
     default_type get_shield() const;
+	default_type get_cargo() const;
+    default_type get_fuel_cons() const;
     int get_id() const;
     int get_rapid_fire(int id) const;
 };

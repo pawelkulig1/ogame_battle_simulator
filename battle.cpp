@@ -61,19 +61,23 @@ void Battle::simulate( int iterations)
           for (Structure s : temp_attacking)
           {
               bool can_attack = true;
+              /*
               while (can_attack)
               {
                   can_attack = s.attack(temp_defending.at(rand() % temp_defending.size()));
               }
+              */
           }
 
           for (Structure s : temp_defending)
           {
               bool can_attack = true;
+              /*
               while (can_attack)
               {
                   can_attack = s.attack(temp_attacking.at(rand() % temp_attacking.size()));
               }
+              */
           }
 
           for (int i = 0; i < temp_attacking.size(); i++)
