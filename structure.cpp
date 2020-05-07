@@ -74,6 +74,7 @@ bool Structure::attack(Structure &another)
 
     if (attack <= static_cast<double>(0.01 * another_default_shield))
     {
+        another.check_if_explodes();
         return will_shot_again;
     }
 
@@ -85,6 +86,7 @@ bool Structure::attack(Structure &another)
     else
     {
         another.m_shield -= attack;
+        another.check_if_explodes();
         return will_shot_again;
     }
 

@@ -47,14 +47,16 @@ void Battle::simulate( int iterations)
     int def_win = 0;
     int draw = 0;
 
-    for (int j = 0; j < iterations; j++)
+    for (int game = 0; game < iterations; game++)
     {
     	std::vector<Structure> temp_attacking(attacking.begin(), attacking.end());
     	std::vector<Structure> temp_defending(defending.begin(), defending.end());
-        std::cout << "round: " << j << "\n";
+        std::cout << "game: " << game << "\n";
 
-        for (int i = 0; i < MAX_ROUNDS; i++)
+        for (int round = 0; round < MAX_ROUNDS; round++)
         {
+            std::cout << "round: " << round << "\n";
+
             if (!(temp_attacking.size() * temp_defending.size()))
             {
                 break;
@@ -161,7 +163,7 @@ void Battle::simulate( int iterations)
 
     for( int i = 0; i < 25; i++ )
     {
-        if (attacker[i]||defender[i])
+        if (attacker[i] || defender[i])
         {
             std::cout<<"      "<<i<<"   |   "<<double(attacker[i])/iterations<<"   |   "<<double(defender[i])/iterations<<'\n';
         }
