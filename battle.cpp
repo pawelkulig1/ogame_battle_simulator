@@ -82,20 +82,27 @@ resources Battle::profit(int* left_attacking, int* left_defending){
 
     for ( int i = 0; i < 25; i++)
     {
-        attacking_loss[i] = attacking_fleet[i] - attacking_left[i];
         defending_loss[i] = defending_fleet[i] - defending_left[i];
     }
 
-    for ( int i = 0; i < 25 ; i++)
+    int att_cargo = 0;
+
+    for ( int i = 0; i < 17 ; i++)
     {
+        attacking_loss[i] = attacking_fleet[i] - attacking_left[i];
+        //att_cargo += attacking_left[i] * cargo id(i)
         //loses += attacking_loss[i] * cost id(i)
+        //debris_field += 0.3 * ( attacking_loss[i] + defenfing_loss[i]) * cost id(i);
     }
+
+    //pillage = 0.5 * def_res * max( 1 , def_res / att_cargo);
+
+    debris_field.deuter = 0;
 
     for (Structure s : attacking)
     {
         fuel.deuter += 1 + s.get_fuel_cons() * distance / 35000 * 4;//4 = (speed/100+1)^2
     }
-
 
     return debris_field + pillage - loses - fuel;
 }
