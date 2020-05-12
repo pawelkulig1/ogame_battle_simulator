@@ -26,7 +26,7 @@ bool Structure::check_if_explodes()
     }
 
     const int threshold = static_cast<double>(0.7 * m_ststructure_ptr->get_hull());
-    
+
     if (m_hull < threshold)
     {
         if (RandomNumberGenerator::get_instance()->get_rand_int(1, m_ststructure_ptr->get_hull() + 1) > m_hull)
@@ -50,7 +50,7 @@ bool Structure::prepare_for_new_round()
         m_shield = m_ststructure_ptr->get_shield();
     }
     return false;
-    
+
 }
 
 int Structure::get_rapid_fire(Structure &another)
@@ -104,4 +104,14 @@ int Structure::get_id() const
 bool Structure::is_exploded() const
 {
     return m_exploded;
+}
+
+int Structure::get_fuel_cons() const
+{
+    return m_ststructure_ptr->get_fuel_cons();
+}
+
+resources Structure::get_cost() const
+{
+    return m_ststructure_ptr->get_cost();
 }

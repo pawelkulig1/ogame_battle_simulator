@@ -36,6 +36,69 @@ void Battle::count(std::vector<Structure> fleet, int* fleet_count)
         fleet_count[s.get_id()]++;
     }
 }
+void Battle::distance_calc(int galaxy, int system, int planet)
+{
+    if (galaxy)
+    {
+        distance = 20000 * galaxy;
+    }
+
+    else if (system)
+    {
+        distance = 2700 + 95 * system;
+    }
+
+    else
+    {
+        distance = 1000 + 5 * planet;
+    }
+}
+
+resources Battle::profit(int* left_attacking, int* left_defending){
+    resources fuel;
+    resources debris_field;
+    resources pillage;
+    resources loses;
+
+    int attacking_fleet[25];
+    int defending_fleet[25];
+    int attacking_loss[25];
+    int defending_loss[25];
+    int attacking_left[25];
+    int defending_left[25];
+
+    for ( int i = 0; i < 25; i++)
+    {
+        attacking_fleet[i] = 0;
+        defending_fleet[i] = 0;
+        attacking_loss[i] = 0;
+        defending_loss[i] = 0;
+        attacking_left[i] = left_attacking[i];
+        defending_left[i] = left_defending[i];
+    }
+
+    count(attacking,attacking_fleet);
+    count(defending,defending_fleet);
+
+    for ( int i = 0; i < 25; i++)
+    {
+        attacking_loss[i] = attacking_fleet[i] - attacking_left[i];
+        defending_loss[i] = defending_fleet[i] - defending_left[i];
+    }
+
+    for ( int i = 0; i < 25 ; i++)
+    {
+        //loses += attacking_loss[i] * cost id(i)
+    }
+
+    for (Structure s : attacking)
+    {
+        fuel.deuter += 1 + s.get_fuel_cons() * distance / 35000 * 4;//4 = (speed/100+1)^2
+    }
+
+
+    return debris_field + pillage - loses - fuel;
+}
 
 void Battle::simulate( int iterations)
 {
@@ -51,11 +114,11 @@ void Battle::simulate( int iterations)
     {
     	std::vector<Structure> temp_attacking(attacking.begin(), attacking.end());
     	std::vector<Structure> temp_defending(defending.begin(), defending.end());
-        std::cout << "game: " << game << "\n";
+        //std::cout << "game: " << game << "\n";
 
         for (int round = 0; round < MAX_ROUNDS; round++)
         {
-            std::cout << "round: " << round << "\n";
+            //std::cout << "round: " << round << "\n";
 
             if (!(temp_attacking.size() * temp_defending.size()))
             {
@@ -80,7 +143,7 @@ void Battle::simulate( int iterations)
                 }
             }
 
-            for (int i = 0; i < temp_attacking.size(); i++)
+            for (int i = temp_attacking.size()-1; i > -1 ; i--)
             {
                 if (temp_attacking.at(i).prepare_for_new_round())
                 {
@@ -88,7 +151,7 @@ void Battle::simulate( int iterations)
                 }
             }
 
-            for (int i = 0; i < temp_defending.size(); i++)
+            for (int i = temp_attacking.size()-1; i > -1; i--)
             {
                 if (temp_defending.at(i).prepare_for_new_round())
                 {
@@ -97,27 +160,26 @@ void Battle::simulate( int iterations)
             }
         }
 
-        if (!temp_attacking.size())
-        {
-            def_win++;
-            for (Structure s : temp_defending ){
-                left_defending.push_back(s);
-            }
-        }
-        else if (!temp_defending.size() )
-        {
-            att_win++;
-            for (Structure s : temp_attacking ){
-                left_attacking.push_back(s);
-            }
-            
-        }
-        else
+        if ((!temp_attacking.size())&&(!temp_defending.size()))
         {
             draw++;
             for (Structure s : temp_attacking ){
                 left_attacking.push_back(s);
             }
+            for (Structure s : temp_defending ){
+                left_defending.push_back(s);
+            }
+        }
+        else if (!temp_defending.size())
+        {
+            att_win++;
+            for (Structure s : temp_attacking ){
+                left_attacking.push_back(s);
+            }
+        }
+        else
+        {
+            def_win++;
             for (Structure s : temp_defending ){
                 left_defending.push_back(s);
             }

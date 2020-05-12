@@ -18,5 +18,7 @@ public:
 	bool check_if_explodes();
 	bool prepare_for_new_round();
 	int get_id() const;
+	int get_fuel_cons() const;
+	resources get_cost() const;
 	bool is_exploded() const;
 };

@@ -1,5 +1,6 @@
 #pragma once
 #include <map>
+#include "resources.h"
 
 class StaticStructure {
 	using default_type = int;
@@ -10,9 +11,10 @@ class StaticStructure {
 	default_type m_shield;
 	default_type m_cargo;
 	default_type m_fuel_cons;
+	resources m_cost;
 public:
     StaticStructure();
-	StaticStructure(std::map<int, int> rapid_fire, default_type attack, default_type hull, default_type shield, default_type cargo, default_type fuel_cons);
+	StaticStructure(std::map<int, int> rapid_fire, default_type attack, default_type hull, default_type shield, default_type cargo, default_type fuel_cons, resources cost);
 	void set_id(int id);
     default_type get_attack() const;
     default_type get_hull() const;
@@ -21,6 +23,7 @@ public:
     default_type get_fuel_cons() const;
     int get_id() const;
     int get_rapid_fire(int id) const;
+	resources get_cost() const;
 };
 
 enum ID {

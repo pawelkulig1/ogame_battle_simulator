@@ -4,13 +4,14 @@ StaticStructure::StaticStructure()
 {
 }
 
-StaticStructure::StaticStructure(std::map<int, int> rapid_fire, StaticStructure::default_type attack, StaticStructure::default_type hull, StaticStructure::default_type shield, StaticStructure::default_type cargo, StaticStructure::default_type fuel_cons):
+StaticStructure::StaticStructure(std::map<int, int> rapid_fire, StaticStructure::default_type attack, StaticStructure::default_type hull, StaticStructure::default_type shield, StaticStructure::default_type cargo, StaticStructure::default_type fuel_cons, resources cost):
     m_rapid_fire(rapid_fire),
     m_attack(attack),
     m_hull(hull),
     m_shield(shield),
     m_cargo(cargo),
-    m_fuel_cons(fuel_cons)
+    m_fuel_cons(fuel_cons),
+    m_cost(cost)
 {
 }
 
@@ -58,4 +59,9 @@ int StaticStructure::get_rapid_fire(int id) const
         rapid = rapid_pos->second;
     }
     return rapid;
+}
+
+resources StaticStructure::get_cost() const
+{
+    return m_cost;
 }
